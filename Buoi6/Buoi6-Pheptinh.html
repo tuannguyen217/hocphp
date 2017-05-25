@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Js Tinh</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+<p class="well text-center"> Bảng tính 2 số </p>
+<div class="form-group">
+  <label >Số A:</label>
+  <input type="text" class="form-control" id="so_a">
+</div>
+<div class="form-group">
+  <label >Số B</label>
+  <input type="text" class="form-control" id="so_b">
+</div>
+<div class="form-group">
+<label for="sel1">Chọn Phép Tính:</label>
+<select id="select" class="class="form-control">
+<option  name="optradio"  value="+">+ ( Cộng )</option>
+<option  name="optradio" value="-">- ( Trừ )</option>
+<option  name="optradio"  value="*">x ( Nhân )</option>
+<option name="optradio" value="/">/ ( Chia )</option>
+</select>
+</div>
+
+<button type="button" class="btn btn-lg" id="tinh">Submit</button>
+<div class="form-group">
+  <label >Kết Quả</label>
+  <input type="text" class="form-control" id="kq" readonly="">
+</div>
+
+<script  type="text/javascript">
+$(document).ready(function(){
+	$('#tinh').click(function(){
+	a = $('#so_a').val();
+	b = $('#so_b').val();
+	a = parseFloat(a);
+	b = parseFloat(b);	
+	// Kiểm tra phải là số không 
+			if (isNaN(a) || isNaN(b)) {
+				alert ('Vui lòng nhập số')
+			}
+			else {
+			pheptinh  = $('#select option:selected').val();
+				if (pheptinh == '+') {
+					result=a+b;
+				}
+				else if (pheptinh == '-') {
+					result=a-b;
+				}
+				else if (pheptinh == '*') {
+					result=a*b;
+				}
+				else if (pheptinh == '/') {
+					if (b ==0){
+						result='Mẫu số phải khác 0';
+						alert('Mẫu Số Khác 0');						
+					} else
+						 result=a/b;
+				}
+				else {					
+					result='Vui lòng chọn phép tính';
+				}
+			}
+			
+		$('#kq').val(result);	
+	})
+});	
+</script>
+</body>
+</html>

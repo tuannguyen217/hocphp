@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Js Tinh</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+  .content {
+  margin: 20px auto;
+  width: 400px;
+  background-color : #f9f7f7;
+  padding : 10px;
+  }  
+  .muangay{
+  color: #fff;
+  background-color: orange; 
+  width: 150px;
+  font-size: 20px;
+  float: left; 
+  padding: 10px;
+  margin-right: 10px
+  }
+  .tang, .giam  {
+  background-color: black;
+  color: #fff;  
+  width: 50px;
+  display: block-inline;
+  float: left;
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  }
+  .tang:active, .giam:active {
+    background-color:  #fff;
+  }
+  .kq {
+  width: 100px ;
+    background-color: #ccc;
+   float: left;
+    padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  }
+  .gia {
+  font-size: 20px;
+  color: #ed0707;
+  font-weight: bold;
+  
+  }
+  .soluong {
+  height: 50px;
+  margin: 10px;
+  }
+  .info {
+  margin: 10px;
+  }
+
+  </style>
+</head>
+<body>
+<div class="container">
+<div class="content">
+	<div class="info">
+		<p class="gia">Đơn Giá : <span id="DonGia" >1500000</span> đ</p>
+		<p class="gia">Tổng Giá: <span id="TongGia"> </span> đ</p>
+	</div>
+	<div class="soluong">
+		<div class="muangay text-center"> Mua Ngay </div>
+		<div class="sl">
+		<div class="giam" id="dec">-</div>
+		<div class="kq" id="kq">1</div>
+		<div class="tang" id="inc">+</div>
+		</div>
+	</div>
+</div>
+</div>
+<script  type="text/javascript">
+  $(document).ready(function(){
+
+    var DonGia = $('#DonGia').text();
+   // console.log(DonGia);
+  DonGia = parseFloat(DonGia);
+
+    var kq = $('#kq').text(); 
+    kq = parseFloat(kq);
+
+    //Hàm hiện tổng Tiên và số lượng // 
+   function ShowTotal(kq){
+         $('#kq').text(kq);
+         TongTien=DonGia*kq;   
+         $('#TongGia').text(TongTien);
+    }
+
+    $('#inc').click(function(){
+      kq = kq+1;
+      ShowTotal(kq); 
+    });
+
+    $('#dec').click(function(){
+      if (kq == 1) {
+        return false;
+      }
+      else {
+      kq = kq-1;     
+      }
+      ShowTotal(kq);
+    });    
+    ShowTotal(kq);
+  })  
+</script>
+</body>
+</html>
